@@ -8,6 +8,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscrued = true;
+  final _formkey = GlobalKey <FormState>();
+  final userController = TextEditingController();
+  final passController = TextEditingController();
+  bool passToggle = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +30,16 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: [
             SizedBox(height: 10),
-            TextField(
+            TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              controller: userController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return '*this field is required';
+                } else {
+                  return null;
+                }
+                },
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -44,8 +57,17 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 20,),
-            TextField(
-              obscureText: passwordObscrued,
+            TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              controller: passController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '*this field is required';
+                  } else {
+                    return null;
+                  }
+                  },
+                obscureText: passwordObscrued,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
